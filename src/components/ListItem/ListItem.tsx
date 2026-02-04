@@ -76,6 +76,10 @@ export default function ListItem({
           <span className={styles.title}>{item.title}</span>
           {itemTags.length > 0 && (
             <div className={styles.tags}>
+              <p className={clsx(styles.priority, styles[item.priority])}>
+                {item.priority}
+              </p>
+              <hr/>
               {itemTags.map((tag) => (
                 <span
                   key={tag.id}
@@ -88,9 +92,6 @@ export default function ListItem({
           )}
         </div>
         <div className={styles.actions}>
-          <p className={clsx(styles.priority, styles[item.priority])}>
-            {item.priority}
-          </p>
           <IconButton onPointerDown={handleEditButtonClick}>
             <MingcuteEdit2Line />
           </IconButton>
