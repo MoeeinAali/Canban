@@ -29,7 +29,7 @@ export default function PriorityInput({
   ...otherProps
 }: Props): ReactNode {
   const [uncontrolledValue, setUncontrolledValue] = useState<Priority>(
-    defaultValue ?? "P0"
+    defaultValue ?? "P0",
   );
 
   const value = controlledValue ?? uncontrolledValue;
@@ -46,7 +46,7 @@ export default function PriorityInput({
       className={clsx(
         styles["priority-input"],
         !!error && styles.error,
-        className
+        className,
       )}
     >
       <label htmlFor={id}>{label}</label>
@@ -59,7 +59,7 @@ export default function PriorityInput({
             className={clsx(
               styles.item,
               styles[priority.toLowerCase()],
-              priority === value && styles.active
+              priority === value && styles.active,
             )}
             onClick={() => handleClick(priority)}
           >

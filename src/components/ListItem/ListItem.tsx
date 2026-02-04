@@ -62,7 +62,7 @@ export default function ListItem({
         ref={setNodeRef}
         className={clsx(
           styles["list-item"],
-          presentational && styles.presentational
+          presentational && styles.presentational,
         )}
         style={{
           opacity: isDragging ? "0.5" : undefined,
@@ -79,12 +79,9 @@ export default function ListItem({
               <p className={clsx(styles.priority, styles[item.priority])}>
                 {item.priority}
               </p>
-              <hr/>
+              <hr />
               {itemTags.map((tag) => (
-                <span
-                  key={tag.id}
-                  className={clsx(styles.tag, tag.color)}
-                >
+                <span key={tag.id} className={clsx(styles.tag, tag.color)}>
                   {tag.label}
                 </span>
               ))}

@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import { toast } from "react-toastify";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { type Resolver, Controller, useForm } from "react-hook-form";
+import { Controller, type Resolver, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import PriorityInput from "@/components/PriorityInput/PriorityInput.tsx";
@@ -25,7 +25,8 @@ type Values = z.output<typeof ListItemSchema>;
 type Props = Pick<ComponentProps<typeof FormModal>, "modalRef"> & {
   listIndex: number;
   itemIndex?: number;
-  defaultValues?: Partial<Values> & Pick<Values, "title" | "description" | "dueDate">;
+  defaultValues?: Partial<Values> &
+    Pick<Values, "title" | "description" | "dueDate">;
 };
 
 export default function ListItemModal({
@@ -90,58 +91,58 @@ export default function ListItemModal({
 
   return (
     <>
-    <FormModal
-      modalRef={modalRef}
-      heading={
-        itemIndex !== undefined ? `Edit Exising Item` : "Create a New Item"
-      }
-      onClose={() => reset()}
-      onRemove={itemIndex !== undefined && handleRemoveButtonClick}
-      onSubmit={handleSubmit(handleFormSubmit)}
-    >
-      <TextInput
-        {...register("title")}
-        label="Title"
-        type="text"
-        error={errors.title?.message}
-      />
-      <TextArea
-        {...register("description")}
-        label="Description"
-        error={errors.description?.message}
-      />
-      <TextInput
-        {...register("dueDate")}
-        label="Due Date"
-        type="date"
-        error={errors.dueDate?.message}
-      />
-      <Controller
-        name="priority"
-        control={control}
-        render={({ field }) => (
-          <PriorityInput
-            label="Priority"
-            value={field.value}
-            onChange={field.onChange}
-            error={errors.priority?.message}
-          />
-        )}
-      />
-      <Controller
-        name="tagIds"
-        control={control}
-        render={({ field }) => (
-          <TagSelect
-            label="Tags"
-            value={field.value}
-            onChange={field.onChange}
-            error={errors.tagIds?.message}
-          />
-        )}
-      />
-    </FormModal>
-    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+      <FormModal
+        modalRef={modalRef}
+        heading={
+          itemIndex !== undefined ? `Edit Exising Item` : "Create a New Item"
+        }
+        onClose={() => reset()}
+        onRemove={itemIndex !== undefined && handleRemoveButtonClick}
+        onSubmit={handleSubmit(handleFormSubmit)}
+      >
+        <TextInput
+          {...register("title")}
+          label="Title"
+          type="text"
+          error={errors.title?.message}
+        />
+        <TextArea
+          {...register("description")}
+          label="Description"
+          error={errors.description?.message}
+        />
+        <TextInput
+          {...register("dueDate")}
+          label="Due Date"
+          type="date"
+          error={errors.dueDate?.message}
+        />
+        <Controller
+          name="priority"
+          control={control}
+          render={({ field }) => (
+            <PriorityInput
+              label="Priority"
+              value={field.value}
+              onChange={field.onChange}
+              error={errors.priority?.message}
+            />
+          )}
+        />
+        <Controller
+          name="tagIds"
+          control={control}
+          render={({ field }) => (
+            <TagSelect
+              label="Tags"
+              value={field.value}
+              onChange={field.onChange}
+              error={errors.tagIds?.message}
+            />
+          )}
+        />
+      </FormModal>
+      <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
     </>
   );
 }

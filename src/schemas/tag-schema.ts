@@ -10,10 +10,7 @@ const LabelSchema = z
   .transform((val) =>
     val
       .split(/\s+/)
-      .map(
-        (word) =>
-          word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-      )
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(" "),
   );
 

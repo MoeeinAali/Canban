@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { tagsData } from "@/data/tags-data.ts";
+
 import type { TagType } from "@/types/tag.ts";
 
 type TagsState = {
@@ -15,10 +16,7 @@ type TagsState = {
 function normalizeLabel(label: string): string {
   return label
     .split(/\s+/)
-    .map(
-      (word) =>
-        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-    )
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 }
 

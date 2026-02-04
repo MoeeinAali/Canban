@@ -76,23 +76,23 @@ export default function ListModal({
 
   return (
     <>
-    <FormModal
-      modalRef={modalRef}
-      heading={
-        listIndex !== undefined ? "Edit Existing List" : "Create a New List"
-      }
-      onClose={() => reset()}
-      onRemove={listIndex !== undefined && handleRemoveButtonClick}
-      onSubmit={handleSubmit(handleFormSubmit)}
-    >
-      <TextInput
-        {...register("title")}
-        label="Title"
-        type="text"
-        error={errors.title?.message}
-      />
-    </FormModal>
-    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+      <FormModal
+        modalRef={modalRef}
+        heading={
+          listIndex !== undefined ? "Edit Existing List" : "Create a New List"
+        }
+        onClose={() => reset()}
+        onRemove={listIndex !== undefined && handleRemoveButtonClick}
+        onSubmit={handleSubmit(handleFormSubmit)}
+      >
+        <TextInput
+          {...register("title")}
+          label="Title"
+          type="text"
+          error={errors.title?.message}
+        />
+      </FormModal>
+      <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
     </>
   );
 }

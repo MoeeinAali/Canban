@@ -84,33 +84,33 @@ export default function TagModal({
 
   return (
     <>
-    <FormModal
-      modalRef={modalRef}
-      heading={tagId !== undefined ? "Edit Existing Tag" : "Create a New Tag"}
-      onClose={() => reset()}
-      onRemove={tagId !== undefined && handleRemoveButtonClick}
-      onSubmit={handleSubmit(handleFormSubmit)}
-    >
-      <TextInput
-        {...register("label")}
-        label="Label"
-        type="text"
-        error={errors.label?.message}
-      />
-      <Controller
-        name="color"
-        control={control}
-        render={({ field }) => (
-          <ColorInput
-            label="Color"
-            error={errors.color?.message}
-            value={field.value as BoardColor}
-            onChange={(color) => field.onChange(color)}
-          />
-        )}
-      />
-    </FormModal>
-    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+      <FormModal
+        modalRef={modalRef}
+        heading={tagId !== undefined ? "Edit Existing Tag" : "Create a New Tag"}
+        onClose={() => reset()}
+        onRemove={tagId !== undefined && handleRemoveButtonClick}
+        onSubmit={handleSubmit(handleFormSubmit)}
+      >
+        <TextInput
+          {...register("label")}
+          label="Label"
+          type="text"
+          error={errors.label?.message}
+        />
+        <Controller
+          name="color"
+          control={control}
+          render={({ field }) => (
+            <ColorInput
+              label="Color"
+              error={errors.color?.message}
+              value={field.value as BoardColor}
+              onChange={(color) => field.onChange(color)}
+            />
+          )}
+        />
+      </FormModal>
+      <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
     </>
   );
 }

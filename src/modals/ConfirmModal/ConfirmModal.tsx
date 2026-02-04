@@ -1,6 +1,7 @@
 import { type ReactNode, type RefObject } from "react";
 
 import Button from "@/components/Button/Button.tsx";
+
 import Modal from "@/modals/Modal/Modal.tsx";
 
 import styles from "./ConfirmModal.module.css";

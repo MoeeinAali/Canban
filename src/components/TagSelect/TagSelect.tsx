@@ -36,16 +36,13 @@ export default function TagSelect({
   };
 
   return (
-    <div
-      className={clsx(
-        styles["tag-select"],
-        !!error && styles.error,
-      )}
-    >
+    <div className={clsx(styles["tag-select"], !!error && styles.error)}>
       <label htmlFor={id}>{label}</label>
       <div className={styles.tags}>
         {tags.length === 0 ? (
-          <span className={styles.empty}>No tags available. Create tags first.</span>
+          <span className={styles.empty}>
+            No tags available. Create tags first.
+          </span>
         ) : (
           tags.map((tag) => {
             const isSelected = value.includes(tag.id);
@@ -53,7 +50,11 @@ export default function TagSelect({
               <button
                 key={tag.id}
                 type="button"
-                className={clsx(styles.tag, tag.color, isSelected && styles.selected)}
+                className={clsx(
+                  styles.tag,
+                  tag.color,
+                  isSelected && styles.selected,
+                )}
                 onClick={() => handleTagClick(tag.id)}
               >
                 {tag.label}

@@ -80,35 +80,39 @@ export default function BoardModal({
 
   return (
     <>
-    <FormModal
-      modalRef={modalRef}
-      heading={
-        boardId !== undefined ? "Edit Existing Board" : "Create a New Board"
-      }
-      onClose={() => reset()}
-      onRemove={boardId !== undefined && handleRemoveButtonClick}
-      onSubmit={handleSubmit(handleFormSubmit)}
-    >
-      <TextInput
-        {...register("title")}
-        label="Title"
-        type="text"
-        error={errors.title?.message}
-      />
-      <TextArea
-        {...register("description")}
-        label="Description"
-        error={errors.description?.message}
-      />
-      <Controller
-        name="color"
-        control={control}
-        render={({ field }) => (
-          <ColorInput {...field} label="Color" error={errors.color?.message} />
-        )}
-      />
-    </FormModal>
-    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+      <FormModal
+        modalRef={modalRef}
+        heading={
+          boardId !== undefined ? "Edit Existing Board" : "Create a New Board"
+        }
+        onClose={() => reset()}
+        onRemove={boardId !== undefined && handleRemoveButtonClick}
+        onSubmit={handleSubmit(handleFormSubmit)}
+      >
+        <TextInput
+          {...register("title")}
+          label="Title"
+          type="text"
+          error={errors.title?.message}
+        />
+        <TextArea
+          {...register("description")}
+          label="Description"
+          error={errors.description?.message}
+        />
+        <Controller
+          name="color"
+          control={control}
+          render={({ field }) => (
+            <ColorInput
+              {...field}
+              label="Color"
+              error={errors.color?.message}
+            />
+          )}
+        />
+      </FormModal>
+      <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
     </>
   );
 }
