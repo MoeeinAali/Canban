@@ -1,4 +1,4 @@
-import { type ComponentProps, type ReactNode } from "react";
+import { type ComponentProps, type ReactNode, useRef } from "react";
 
 import { useNavigate } from "react-router";
 
@@ -12,6 +12,7 @@ import ColorInput from "@/components/ColorInput/ColorInput.tsx";
 import TextArea from "@/components/TextArea/TextArea.tsx";
 import TextInput from "@/components/TextInput/TextInput.tsx";
 
+import ConfirmModal from "@/modals/ConfirmModal/ConfirmModal.tsx";
 import FormModal from "@/modals/FormModal/FormModal.tsx";
 
 import { BoardSchema } from "@/schemas/board-schema.ts";
@@ -30,6 +31,7 @@ export default function BoardModal({
   boardId,
   defaultValues,
 }: Props): ReactNode {
+  const confirmModalRef = useRef<HTMLDialogElement>(null);
   const createBoard = useKanbanStore((state) => state.createBoard);
   const editBoard = useKanbanStore((state) => state.editBoard);
   const removeBoard = useKanbanStore((state) => state.removeBoard);
@@ -51,12 +53,16 @@ export default function BoardModal({
     if (boardId === undefined) {
       return;
     }
+    confirmModalRef.current?.showModal();
+  };
 
+  const handleConfirmDelete = (): void => {
+    if (boardId === undefined) {
+      return;
+    }
     removeBoard(boardId);
     toast.success("Board removed successfully.");
-
     modalRef.current?.close();
-
     navigate("/");
   };
 
@@ -73,6 +79,7 @@ export default function BoardModal({
   };
 
   return (
+    <>
     <FormModal
       modalRef={modalRef}
       heading={
@@ -101,5 +108,7 @@ export default function BoardModal({
         )}
       />
     </FormModal>
+    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+    </>
   );
 }

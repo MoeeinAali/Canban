@@ -1,4 +1,4 @@
-import { type ComponentProps, type ReactNode } from "react";
+import { type ComponentProps, type ReactNode, useRef } from "react";
 
 import { useParams } from "react-router";
 
@@ -13,6 +13,7 @@ import TagSelect from "@/components/TagSelect/TagSelect.tsx";
 import TextArea from "@/components/TextArea/TextArea.tsx";
 import TextInput from "@/components/TextInput/TextInput.tsx";
 
+import ConfirmModal from "@/modals/ConfirmModal/ConfirmModal.tsx";
 import FormModal from "@/modals/FormModal/FormModal.tsx";
 
 import { ListItemSchema } from "@/schemas/list-item-schema.ts";
@@ -33,6 +34,7 @@ export default function ListItemModal({
   itemIndex,
   defaultValues,
 }: Props): ReactNode {
+  const confirmModalRef = useRef<HTMLDialogElement>(null);
   const { boardId } = useParams();
 
   const createItem = useKanbanStore((state) => state.createItem);
@@ -62,10 +64,15 @@ export default function ListItemModal({
     if (itemIndex === undefined) {
       return;
     }
+    confirmModalRef.current?.showModal();
+  };
 
+  const handleConfirmDelete = (): void => {
+    if (itemIndex === undefined) {
+      return;
+    }
     removeItem(boardId, listIndex, itemIndex);
     toast.success("Item removed successfully.");
-
     modalRef.current?.close();
   };
 
@@ -82,6 +89,7 @@ export default function ListItemModal({
   };
 
   return (
+    <>
     <FormModal
       modalRef={modalRef}
       heading={
@@ -133,5 +141,7 @@ export default function ListItemModal({
         )}
       />
     </FormModal>
+    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { type ComponentProps, type ReactNode } from "react";
+import { type ComponentProps, type ReactNode, useRef } from "react";
 
 import { useParams } from "react-router";
 
@@ -10,6 +10,7 @@ import { z } from "zod";
 
 import TextInput from "@/components/TextInput/TextInput.tsx";
 
+import ConfirmModal from "@/modals/ConfirmModal/ConfirmModal.tsx";
 import FormModal from "@/modals/FormModal/FormModal.tsx";
 
 import { ListSchema } from "@/schemas/list-schema.ts";
@@ -28,6 +29,7 @@ export default function ListModal({
   listIndex,
   defaultValues,
 }: Props): ReactNode {
+  const confirmModalRef = useRef<HTMLDialogElement>(null);
   const { boardId } = useParams();
 
   const createList = useKanbanStore((state) => state.createList);
@@ -48,10 +50,15 @@ export default function ListModal({
     if (listIndex === undefined) {
       return;
     }
+    confirmModalRef.current?.showModal();
+  };
 
+  const handleConfirmDelete = (): void => {
+    if (listIndex === undefined) {
+      return;
+    }
     removeList(boardId, listIndex);
     toast.success("List removed successfully.");
-
     modalRef.current?.close();
   };
 
@@ -68,6 +75,7 @@ export default function ListModal({
   };
 
   return (
+    <>
     <FormModal
       modalRef={modalRef}
       heading={
@@ -84,5 +92,7 @@ export default function ListModal({
         error={errors.title?.message}
       />
     </FormModal>
+    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+    </>
   );
 }

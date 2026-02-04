@@ -1,4 +1,4 @@
-import { type ComponentProps, type ReactNode } from "react";
+import { type ComponentProps, type ReactNode, useRef } from "react";
 
 import { toast } from "react-toastify";
 
@@ -9,6 +9,7 @@ import { z } from "zod";
 import ColorInput from "@/components/ColorInput/ColorInput.tsx";
 import TextInput from "@/components/TextInput/TextInput.tsx";
 
+import ConfirmModal from "@/modals/ConfirmModal/ConfirmModal.tsx";
 import FormModal from "@/modals/FormModal/FormModal.tsx";
 
 import { TagSchema } from "@/schemas/tag-schema.ts";
@@ -29,6 +30,7 @@ export default function TagModal({
   tagId,
   defaultValues,
 }: Props): ReactNode {
+  const confirmModalRef = useRef<HTMLDialogElement>(null);
   const createTag = useTagsStore((state) => state.createTag);
   const editTag = useTagsStore((state) => state.editTag);
   const removeTag = useTagsStore((state) => state.removeTag);
@@ -48,10 +50,15 @@ export default function TagModal({
     if (tagId === undefined) {
       return;
     }
+    confirmModalRef.current?.showModal();
+  };
 
+  const handleConfirmDelete = (): void => {
+    if (tagId === undefined) {
+      return;
+    }
     removeTag(tagId);
     toast.success("Tag removed successfully.");
-
     modalRef.current?.close();
   };
 
@@ -76,6 +83,7 @@ export default function TagModal({
   };
 
   return (
+    <>
     <FormModal
       modalRef={modalRef}
       heading={tagId !== undefined ? "Edit Existing Tag" : "Create a New Tag"}
@@ -102,5 +110,7 @@ export default function TagModal({
         )}
       />
     </FormModal>
+    <ConfirmModal ref={confirmModalRef} onConfirm={handleConfirmDelete} />
+    </>
   );
 }
