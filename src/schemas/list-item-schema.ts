@@ -10,4 +10,5 @@ export const ListItemSchema = z.object({
   description: DescriptionSchema,
   dueDate: z.string(),
   priority: z.enum(PRIORITIES).default("P2"),
+  tagIds: z.array(z.string()).default([]),
 });

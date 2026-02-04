@@ -5,26 +5,26 @@ import { useParams } from "react-router";
 import { toast } from "react-toastify";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { type Resolver, Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
+import PriorityInput from "@/components/PriorityInput/PriorityInput.tsx";
+import TagSelect from "@/components/TagSelect/TagSelect.tsx";
 import TextArea from "@/components/TextArea/TextArea.tsx";
 import TextInput from "@/components/TextInput/TextInput.tsx";
 
 import FormModal from "@/modals/FormModal/FormModal.tsx";
 
-import PriorityInput from "@/components/PriorityInput/PriorityInput.tsx";
-
 import { ListItemSchema } from "@/schemas/list-item-schema.ts";
 
 import { useKanbanStore } from "@/stores/kanban-store.ts";
 
-type Values = z.infer<typeof ListItemSchema>;
+type Values = z.output<typeof ListItemSchema>;
 
 type Props = Pick<ComponentProps<typeof FormModal>, "modalRef"> & {
   listIndex: number;
   itemIndex?: number;
-  defaultValues?: Values;
+  defaultValues?: Partial<Values> & Pick<Values, "title" | "description" | "dueDate">;
 };
 
 export default function ListItemModal({
@@ -45,9 +45,17 @@ export default function ListItemModal({
     reset,
     control,
     formState: { errors },
-  } = useForm({
-    defaultValues,
-    resolver: zodResolver(ListItemSchema),
+  } = useForm<Values>({
+    defaultValues: (defaultValues
+      ? { ...defaultValues, tagIds: defaultValues.tagIds ?? [] }
+      : {
+          title: "",
+          description: "",
+          dueDate: "",
+          priority: "P2",
+          tagIds: [],
+        }) as Values,
+    resolver: zodResolver(ListItemSchema) as Resolver<Values>,
   });
 
   const handleRemoveButtonClick = (): void => {
@@ -109,6 +117,18 @@ export default function ListItemModal({
             value={field.value}
             onChange={field.onChange}
             error={errors.priority?.message}
+          />
+        )}
+      />
+      <Controller
+        name="tagIds"
+        control={control}
+        render={({ field }) => (
+          <TagSelect
+            label="Tags"
+            value={field.value}
+            onChange={field.onChange}
+            error={errors.tagIds?.message}
           />
         )}
       />

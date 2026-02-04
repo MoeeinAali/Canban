@@ -11,6 +11,8 @@ import MingcuteEdit2Line from "@/icons/MingcuteEdit2Line.tsx";
 
 import ListItemModal from "@/modals/ListItemModal/ListItemModal.tsx";
 
+import { useTagsStore } from "@/stores/tags-store.ts";
+
 import type { ListItemType } from "@/types/list-item.ts";
 
 import styles from "./ListItem.module.css";
@@ -29,6 +31,9 @@ export default function ListItem({
   item,
 }: Props): ReactNode {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const tags = useTagsStore((state) => state.tags);
+  const tagIds = item.tagIds ?? [];
+  const itemTags = tags.filter((tag) => tagIds.includes(tag.id));
 
   const {
     attributes,
@@ -67,17 +72,35 @@ export default function ListItem({
         {...listeners}
         {...attributes}
       >
-        {item.title}
-        <IconButton onPointerDown={handleEditButtonClick}>
-          <MingcuteEdit2Line />
-        </IconButton>
-        <p className={clsx(styles.priority,styles[item.priority])}>{item.priority}</p>
+        <div className={styles.content}>
+          <span className={styles.title}>{item.title}</span>
+          {itemTags.length > 0 && (
+            <div className={styles.tags}>
+              {itemTags.map((tag) => (
+                <span
+                  key={tag.id}
+                  className={clsx(styles.tag, tag.color)}
+                >
+                  {tag.label}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className={styles.actions}>
+          <p className={clsx(styles.priority, styles[item.priority])}>
+            {item.priority}
+          </p>
+          <IconButton onPointerDown={handleEditButtonClick}>
+            <MingcuteEdit2Line />
+          </IconButton>
+        </div>
       </div>
       <ListItemModal
         modalRef={modalRef}
         listIndex={listIndex}
         itemIndex={itemIndex}
-        defaultValues={item}
+        defaultValues={{ ...item, tagIds: item.tagIds ?? [] }}
       />
     </>
   );

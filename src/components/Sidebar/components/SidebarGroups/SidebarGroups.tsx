@@ -42,9 +42,9 @@ export default function SidebarGroups(): ReactNode {
       title: "System",
       items: [
         {
-          id: "settings",
-          href: "/settings",
-          title: "Settings",
+          id: "tags",
+          href: "/tags",
+          title: "Tags",
           color: "gray",
           icon: <MingcuteSettings5Line />,
         },

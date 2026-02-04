@@ -18,6 +18,7 @@ export const boardsData: BoardType[] = [
             description: "Build hero, features, and footer for marketing site.",
             dueDate: "2025-09-20",
             priority: "P0",
+            tagIds: ["tag-1", "tag-3"],
           },
           {
             id: "item-2",
@@ -25,6 +26,7 @@ export const boardsData: BoardType[] = [
             description: "Create search UI and data fetching for results page.",
             dueDate: "2025-09-27",
             priority: "P1",
+            tagIds: ["tag-1"],
           },
           {
             id: "item-3",
@@ -33,6 +35,7 @@ export const boardsData: BoardType[] = [
               "Reusable navigation with responsive menu and active states.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1"],
           },
           {
             id: "item-4",
@@ -41,6 +44,7 @@ export const boardsData: BoardType[] = [
               "Global toast notifications with variants and queueing.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1"],
           },
           {
             id: "item-5",
@@ -48,6 +52,7 @@ export const boardsData: BoardType[] = [
             description: "Image slider with autoplay and swipe gestures.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1", "tag-3"],
           },
           {
             id: "item-6",
@@ -55,6 +60,7 @@ export const boardsData: BoardType[] = [
             description: "Define CRUD endpoints and types for users.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-2"],
           },
         ],
       },
@@ -68,6 +74,7 @@ export const boardsData: BoardType[] = [
             description: "Scaffold shell, header, and main content regions.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1"],
           },
           {
             id: "item-8",
@@ -75,6 +82,7 @@ export const boardsData: BoardType[] = [
             description: "Generic icon wrapper with size and color props.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1"],
           },
           {
             id: "item-9",
@@ -82,6 +90,7 @@ export const boardsData: BoardType[] = [
             description: "Login, register, and session handling with tokens.",
             dueDate: "2025-09-18",
             priority: "P2",
+            tagIds: ["tag-2", "tag-6"],
           },
           {
             id: "item-10",
@@ -89,6 +98,7 @@ export const boardsData: BoardType[] = [
             description: "Wireframe and UI kit for landing sections.",
             dueDate: "2025-09-22",
             priority: "P2",
+            tagIds: ["tag-3"],
           },
         ],
       },
@@ -102,6 +112,7 @@ export const boardsData: BoardType[] = [
             description: "Brainstorm and shortlist memorable names.",
             dueDate: "",
             priority: "P2",
+            tagIds: [],
           },
           {
             id: "item-12",
@@ -109,6 +120,7 @@ export const boardsData: BoardType[] = [
             description: "Initialize project with Vite, TS, and ESLint.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1", "tag-7"],
           },
           {
             id: "item-13",
@@ -116,6 +128,7 @@ export const boardsData: BoardType[] = [
             description: "Set up service skeleton and folder structure.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-2"],
           },
           {
             id: "item-14",
@@ -123,6 +136,7 @@ export const boardsData: BoardType[] = [
             description: "Type scale and font pairing established.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-3"],
           },
           {
             id: "item-15",
@@ -130,6 +144,7 @@ export const boardsData: BoardType[] = [
             description: "Color palette and semantic tokens added.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-3"],
           },
           {
             id: "item-16",
@@ -137,6 +152,7 @@ export const boardsData: BoardType[] = [
             description: "HTTP client and base URL configured.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1", "tag-2"],
           },
         ],
       },
@@ -159,6 +175,7 @@ export const boardsData: BoardType[] = [
             description: "Collect topics for September posts.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
           {
             id: "item-18",
@@ -166,6 +183,7 @@ export const boardsData: BoardType[] = [
             description: "Outline theme and episode ideas.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
           {
             id: "item-19",
@@ -173,6 +191,7 @@ export const boardsData: BoardType[] = [
             description: "List potential guests and contact info.",
             dueDate: "2025-10-01",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
           {
             id: "item-20",
@@ -180,6 +199,7 @@ export const boardsData: BoardType[] = [
             description: "Define 3-5 pillar pages to target.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
         ],
       },
@@ -193,6 +213,7 @@ export const boardsData: BoardType[] = [
             description: "Write first draft with screenshots.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4", "tag-7"],
           },
           {
             id: "item-22",
@@ -200,6 +221,7 @@ export const boardsData: BoardType[] = [
             description: "Draft copy and CTA.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
           {
             id: "item-23",
@@ -207,6 +229,7 @@ export const boardsData: BoardType[] = [
             description: "Script intro and key points.",
             dueDate: "2025-09-25",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
         ],
       },
@@ -220,6 +243,7 @@ export const boardsData: BoardType[] = [
             description: "Published on docs and blog.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4", "tag-7"],
           },
           {
             id: "item-25",
@@ -227,6 +251,7 @@ export const boardsData: BoardType[] = [
             description: "Posted with visuals.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
           {
             id: "item-26",
@@ -234,6 +259,7 @@ export const boardsData: BoardType[] = [
             description: "Edited and live on site.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-4"],
           },
         ],
       },
@@ -255,6 +281,7 @@ export const boardsData: BoardType[] = [
             description: "Plan 3 workouts and stretch sessions.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
           {
             id: "item-28",
@@ -262,6 +289,7 @@ export const boardsData: BoardType[] = [
             description: "Choose title and reading schedule.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
           {
             id: "item-29",
@@ -269,6 +297,7 @@ export const boardsData: BoardType[] = [
             description: "Set monthly goal and sheet.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
           {
             id: "item-30",
@@ -276,6 +305,7 @@ export const boardsData: BoardType[] = [
             description: "Study patterns and practice tasks.",
             dueDate: "2025-10-05",
             priority: "P2",
+            tagIds: ["tag-1", "tag-5"],
           },
         ],
       },
@@ -289,6 +319,7 @@ export const boardsData: BoardType[] = [
             description: "Track wake time and journaling.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
           {
             id: "item-32",
@@ -296,6 +327,7 @@ export const boardsData: BoardType[] = [
             description: "Complete hooks and context modules.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-1", "tag-5"],
           },
           {
             id: "item-33",
@@ -303,6 +335,7 @@ export const boardsData: BoardType[] = [
             description: "Prepare lunches for weekdays.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
         ],
       },
@@ -316,6 +349,7 @@ export const boardsData: BoardType[] = [
             description: "Clean desk and organize cables.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
           {
             id: "item-35",
@@ -323,6 +357,7 @@ export const boardsData: BoardType[] = [
             description: "Define 3 objectives for the quarter.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
           {
             id: "item-36",
@@ -330,6 +365,7 @@ export const boardsData: BoardType[] = [
             description: "Choose trail and invite friends.",
             dueDate: "",
             priority: "P2",
+            tagIds: ["tag-5"],
           },
         ],
       },

@@ -6,4 +6,5 @@ export type ListItemType = {
   description: string;
   dueDate: string;
   priority: ListItemPriority;
+  tagIds?: string[];
 };

@@ -15,6 +15,38 @@
   cursor: default;
   user-select: none;
 
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-inline-size: 0;
+  }
+
+  .title {
+    font-weight: 500;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .tag {
+    padding: 0.125rem 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-1);
+    background-color: var(--color-fade, var(--color-gray-200));
+    color: var(--color-main, var(--color-gray-800));
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .priority {
     width: fit-content;
     padding-inline: 0.25rem;
@@ -49,13 +81,13 @@
     }
   }
 
-  > button {
+  .actions button {
     opacity: 0;
   }
 
   &:not(.presentational) {
     &:hover {
-      > button {
+      .actions button {
         opacity: 1;
       }
       .priority {
