@@ -18,7 +18,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-surface-0);
+    background-color: color-mix(in srgb, var(--color-main) 30%, transparent);
 
     transition-duration: 250ms;
   }

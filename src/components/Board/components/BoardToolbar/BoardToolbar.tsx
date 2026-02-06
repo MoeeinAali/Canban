@@ -35,10 +35,16 @@ export default function BoardToolbar({ board }: Props): ReactNode {
       <span className={clsx(styles.badge, board.color)}></span>
       <div className={styles.title}>{board.title}</div>
       <div className={styles.actions}>
-        <IconButton onClick={handleEditBoardButtonClick}>
+        <IconButton
+          onClick={handleEditBoardButtonClick}
+          className={board.color}
+        >
           <MingcuteEdit2Line />
         </IconButton>
-        <IconButton onClick={handleCreateListButtonClick}>
+        <IconButton
+          onClick={handleCreateListButtonClick}
+          className={board.color}
+        >
           <MingcuteAddLine />
         </IconButton>
       </div>

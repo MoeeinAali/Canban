@@ -2,6 +2,8 @@ import type { ComponentProps, ReactNode } from "react";
 
 import clsx from "clsx";
 
+import { BOARD_COLORS, type BoardColor } from "@/types/board";
+
 import styles from "./IconButton.module.css";
 
 type Props = ComponentProps<"button">;
@@ -12,7 +14,10 @@ export default function IconButton({
   ...otherProps
 }: Props): ReactNode {
   return (
-    <button className={clsx(styles["icon-button"], className)} {...otherProps}>
+    <button
+      className={clsx(styles["icon-button"], "gray" as BoardColor, className)}
+      {...otherProps}
+    >
       {children}
     </button>
   );
