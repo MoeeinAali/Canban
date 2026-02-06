@@ -6,7 +6,7 @@ const LabelSchema = z
   .string("Label must be a string.")
   .trim()
   .nonempty("Label cannot be empty.")
-  .min(2, "Label must be at least 2 characters.")
+  .min(3, "Label must be at least 3 characters.")
   .transform((val) =>
     val
       .split(/\s+/)
