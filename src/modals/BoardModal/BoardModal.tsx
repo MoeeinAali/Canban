@@ -1,4 +1,4 @@
-import { type ComponentProps, type ReactNode, useRef } from "react";
+import { type ComponentProps, type ReactNode, useEffect, useRef } from "react";
 
 import { useNavigate } from "react-router";
 
@@ -18,6 +18,8 @@ import FormModal from "@/modals/FormModal/FormModal.tsx";
 import { BoardSchema } from "@/schemas/board-schema.ts";
 
 import { useKanbanStore } from "@/stores/kanban-store.ts";
+
+import { BOARD_COLORS } from "@/types/board";
 
 type Values = z.infer<typeof BoardSchema>;
 
@@ -45,9 +47,13 @@ export default function BoardModal({
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: defaultValues ?? { color: "blue" },
+    defaultValues: defaultValues ?? { color: BOARD_COLORS[0] },
     resolver: zodResolver(BoardSchema),
   });
+
+  useEffect(() => {
+    reset(defaultValues ?? { color: BOARD_COLORS[0] });
+  }, [defaultValues, reset]);
 
   const handleRemoveButtonClick = (): void => {
     if (boardId === undefined) {
