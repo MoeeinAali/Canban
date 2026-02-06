@@ -1,4 +1,6 @@
 .board-toolbar {
+  position: relative;
+
   background-color: var(--color-surface-2);
   box-shadow: var(--shadow-2);
 
@@ -11,8 +13,23 @@
 
   border-radius: var(--border-radius-2);
 
+
+  .badge {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+
+    width: 0.5rem;
+    height: 100%;
+
+    background-color: var(--color-main);
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+
   .title {
     font-size: var(--fz-500);
     font-weight: 700;
+    margin-left: 0.5rem;
   }
 }

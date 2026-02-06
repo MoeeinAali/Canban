@@ -1,5 +1,7 @@
 import { type ReactNode, useRef } from "react";
 
+import clsx from "clsx";
+
 import IconButton from "@/components/IconButton/IconButton.tsx";
 
 import MingcuteAddLine from "@/icons/MingcuteAddLine.tsx";
@@ -30,6 +32,7 @@ export default function BoardToolbar({ board }: Props): ReactNode {
 
   return (
     <div className={styles["board-toolbar"]}>
+      <span className={clsx(styles.badge, board.color)}></span>
       <div className={styles.title}>{board.title}</div>
       <div className={styles.actions}>
         <IconButton onClick={handleEditBoardButtonClick}>

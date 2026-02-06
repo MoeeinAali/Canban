@@ -28,6 +28,7 @@ export default function Sidebar(): ReactNode {
           <MingcuteArrowsRightLine />
         </IconButton>
       </div>
+
       <nav>
         <SidebarGroups />
       </nav>

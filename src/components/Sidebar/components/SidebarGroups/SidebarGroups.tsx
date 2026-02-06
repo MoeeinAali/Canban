@@ -28,6 +28,7 @@ export default function SidebarGroups(): ReactNode {
 
   const groups: SidebarGroup[] = [
     {
+      title: "System",
       items: [
         {
           id: "home",
@@ -36,11 +37,6 @@ export default function SidebarGroups(): ReactNode {
           color: "gray",
           icon: <MingcuteHome7Line />,
         },
-      ],
-    },
-    {
-      title: "System",
-      items: [
         {
           id: "tags",
           href: "/tags",

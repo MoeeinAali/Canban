@@ -55,7 +55,7 @@ export function filterTasks(
     const taskTags = task.tagIds ?? [];
     const matchesTags =
       selectedTags.length === 0 ||
-      selectedTags.every((t) => taskTags.includes(t));
+      selectedTags.some((t) => taskTags.includes(t));
 
     return matchesText && matchesPriority && matchesTags;
   });
