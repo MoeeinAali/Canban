@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { BOARD_COLORS, type BoardColor } from "@/types/board";
+import { type BoardColor } from "@/types/board";
 
 import styles from "./IconButton.module.css";
 
