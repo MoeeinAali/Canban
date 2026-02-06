@@ -31,6 +31,18 @@ export default function Sidebar(): ReactNode {
       <nav>
         <SidebarGroups />
       </nav>
+
+      <div className={styles.footer}>
+        <p className={styles.copyright}>© Moeein Aali</p>
+        <a
+          className={styles.link}
+          href="https://github.com/moeeinaali"
+          target="_blank"
+          rel="noreferrer"
+        >
+          github.com/moeeinaali
+        </a>
+      </div>
     </aside>
   );
 }
