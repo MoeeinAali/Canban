@@ -6,10 +6,13 @@ import MingcuteCheckFill from "@/icons/MingcuteCheckFill.tsx";
 
 import { useTagsStore } from "@/stores/tags-store.ts";
 
+import type { TagType } from "@/types/tag.ts";
+
 import styles from "./TagSelect.module.css";
 
 type Props = {
   label: string;
+  tags?: TagType[];
   value?: string[];
   defaultValue?: string[];
   error?: string | null;
@@ -18,12 +21,14 @@ type Props = {
 
 export default function TagSelect({
   label,
+  tags: providedTags,
   value: controlledValue,
   defaultValue,
   error,
   onChange,
 }: Props): ReactNode {
-  const tags = useTagsStore((state) => state.tags);
+  const storeTags = useTagsStore((state) => state.tags);
+  const tags = providedTags ?? storeTags;
   const value = controlledValue ?? defaultValue ?? [];
   const id = useId();
 
